@@ -4,110 +4,77 @@ import ReactDOM from 'react-dom'
 // To get the root element from the HTML document
 import asabenehImage from './images/asabeneh.jpg'
 
-// to import the doSomeMath from the math.js with or without extension
-import doSomeMath from './math.js'
-
-// to import the other modules
-// since these modules were not exported as default we have to desctructure
-import { addTwo, multiply, subtract } from './math.js'
-
-import * as everything from './math.js'
-console.log(addTwo(5, 5))
-console.log(doSomeMath.addTwo(5, 5))
-console.log(everything)
 // JSX element, header
 
-
-// JSX element, header
-const welcome = 'Welcome to 30 Days Of React'
-const title = 'Getting Started React'
-const subtitle = 'JavaScript Library'
 const author = {
   firstName: 'Asabeneh',
   lastName: 'Yetayeh',
 }
-const date = 'Oct 2, 2020'
 
 // JSX element, header
 const header = (
   <header>
     <div className='header-wrapper'>
-      <h1>{welcome}</h1>
-      <h2>{title}</h2>
-      <h3>{subtitle}</h3>
+      <img src={asabenehImage} alt='author name' style={{'border-radius':'50%', width:'200px', height:'200px'}}></img>
+      <h3>
+        {author.firstName} {author.lastName} <i class="fas fa-check-circle"></i>
+      </h3>
+      <br></br>
       <p>
-        Instructor: {author.firstName} {author.lastName}
+        Senior Developer, Finland
       </p>
-      <small>Date: {date}</small>
     </div>
   </header>
 )
 
-const numOne = 3
-const numTwo = 2
+const Header = ()=>{
+  return header; 
+}
 
-const result = (
-  <p>
-    {numOne} + {numTwo} = {numOne + numTwo}
-  </p>
-)
-
-const yearBorn = 1820
-const currentYear = new Date().getFullYear()
-const age = currentYear - yearBorn
-const personAge = (
-  <p>
-    {' '}
-    {author.firstName} {author.lastName} is {age} years old
-  </p>
-)
 
 // JSX element, main
-const techs = ['HTML', 'CSS', 'JavaScript']
+const techs = ['HTML', 'CSS', 'JavaScript','Node.js', 'ReactJS', 'jQuery', 'GraphQL', 'MongoDB', 'Docker']
 const techsFormatted = techs.map((tech) => <li>{tech}</li>)
-
-const user = (
-  <div>
-    <img src={asabenehImage} alt='asabeneh image' />
-  </div>
-)
 
 // JSX element, main
 const main = (
   <main>
     <div className='main-wrapper'>
-      <p>
-        Prerequisite to get started{' '}
-        <strong>
-          <em>react.js</em>
-        </strong>
-        :
-      </p>
-      <ul>{techsFormatted}</ul>
-      {result}
-      {personAge}
-      {user}
+      <h4>
+        Skills{' '}
+      </h4>
+      <p><ul>{techsFormatted}</ul></p>
     </div>
   </main>
 )
-
-const copyRight = 'Copyright 2020'
+const Main = ()=>{
+  return main; 
+}
+const ReusableButton = ()=>(
+  <div>
+    <button>ReusableButton</button>
+  </div>
+)
 
 // JSX element, footer
-const footer = (
-  <footer>
-    <div className='footer-wrapper'>
-      <p>{copyRight}</p>
-    </div>
-  </footer>
+const Footer = ()=>(
+     <footer>
+      <div className='footer-wrapper'>
+        <p><i class="fas fa-clock"></i> <span className='date-text'>Joined January 4, 2019</span></p>
+      </div>  
+      
+    </footer>
+  
 )
+
 
 // JSX element, app
 const app = (
   <div className='app'>
-    {header}
-    {main}
-    {footer}
+    <Header />
+    <Main />
+    <Footer />
+    <ReusableButton />
   </div>
 )
 

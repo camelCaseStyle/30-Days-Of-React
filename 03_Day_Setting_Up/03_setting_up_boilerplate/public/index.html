@@ -7,6 +7,8 @@
       href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Roboto:300,400,500&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
     <meta
       name="description"
       content="Web site created using create-react-app"
@@ -28,11 +30,15 @@
         font-family: 'Montserrat';
         font-weight: 300;
         color: black;
+        background-color: #F0F1F7;
       }
 
-      .root {
+      #root {
         min-height: 100%;
+        background-color: #FFFFFF;
         position: relative;
+        margin: 20px;
+        border-radius: 10px;
       }
 
       .header-wrapper,
@@ -49,17 +55,15 @@
       }
 
       h1 {
-        font-size: 70px;
-        font-weight: 300;
+        nom 
       }
 
       h2,
       h3 {
-        font-weight: 300;
+        font-weight: 500;
       }
 
       header {
-        background-color: #61dbfb;
         padding: 10px;
       }
 
@@ -67,28 +71,34 @@
         padding: 10px 10px 60px;
         /* Height of the footer */
       }
-
       ul {
-        margin-left: 15px;
+        display: flex;
       }
-
+     
       ul li {
         list-style: none;
+        margin-right: 1em;
+        background-color: #7FD9D8;
+        border-radius: 5px;
+        padding: 0 10px;
+        color:white;
+        font-weight:500;
       }
 
       footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 60px;
-        /* Height of the footer */
-        background: #6cf;
+        padding:10px;
       }
 
       .footer-wrapper {
-        font-weight: 400;
-        text-align: center;
-        line-height: 60px;
+        width: 85%;
+        padding: 10px;
+        
+      }
+      .date-text{
+        font-weight:200;
+      }
+      .fas{
+        color: #7FD9D8;
       }
     </style>
   </head>
