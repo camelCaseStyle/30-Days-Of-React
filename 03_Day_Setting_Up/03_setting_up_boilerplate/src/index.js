@@ -6,78 +6,100 @@ import asabenehImage from './images/asabeneh.jpg'
 
 // JSX element, header
 
-const author = {
-  firstName: 'Asabeneh',
-  lastName: 'Yetayeh',
-}
+
 
 // JSX element, header
-const header = (
+const Header = ({
+  data:{
+    asabenehImage, 
+    author:{firstName, middleName, lastName},
+    location
+  }
+})=>{
+  return(
   <header>
     <div className='header-wrapper'>
       <img src={asabenehImage} alt='author name' style={{'border-radius':'50%', width:'200px', height:'200px'}}></img>
       <h3>
-        {author.firstName} {author.lastName} <i class="fas fa-check-circle"></i>
+        {firstName} {middleName} {lastName} <i class="fas fa-check-circle"></i>
       </h3>
       <br></br>
       <p>
-        Senior Developer, Finland
+        {location}
       </p>
     </div>
   </header>
-)
-
-const Header = ()=>{
-  return header; 
+  )
 }
 
 
-// JSX element, main
-const techs = ['HTML', 'CSS', 'JavaScript','Node.js', 'ReactJS', 'jQuery', 'GraphQL', 'MongoDB', 'Docker']
-const techsFormatted = techs.map((tech) => <li>{tech}</li>)
 
 // JSX element, main
-const main = (
-  <main>
+const Techlist = ({techs})=>{
+  const techList = techs.map((tech)=><li key={tech}>{tech}</li>)
+  return techList; 
+}
+
+// JSX element, main
+const Main = ({
+  data:{
+    skills
+  }
+})=>{
+  return (
+    <main>
     <div className='main-wrapper'>
       <h4>
         Skills{' '}
+        :
       </h4>
-      <p><ul>{techsFormatted}</ul></p>
+      <ul><Techlist techs={skills}/></ul>
     </div>
   </main>
-)
-const Main = ()=>{
-  return main; 
+  )
 }
-const ReusableButton = ()=>(
-  <div>
-    <button>ReusableButton</button>
-  </div>
-)
+
+
 
 // JSX element, footer
-const Footer = ()=>(
-     <footer>
-      <div className='footer-wrapper'>
-        <p><i class="fas fa-clock"></i> <span className='date-text'>Joined January 4, 2019</span></p>
-      </div>  
-      
+const Footer = ({
+  data:{
+    copyright
+  }
+})=>{ 
+  return (
+    <footer>
+    <div className='footer-wrapper'>
+      <p>{copyright}</p>
+    </div>
     </footer>
+  )
   
-)
+}
 
 
 // JSX element, app
-const app = (
-  <div className='app'>
-    <Header />
-    <Main />
-    <Footer />
-    <ReusableButton />
-  </div>
-)
+const App = ()=>{
+  const data = {
+    asabenehImage: asabenehImage,
+    author: {
+      firstName: 'Anubhav',
+      middleName: 'Ashish',
+      lastName: 'Baria'
+    },
+    location: 'Sydney, New South Wales',
+    copyright: 'Copyright 2020',
+    skills: ['HTML', 'CSS', 'JavaScript']
+  }
+  return (
+    <div className='app'>
+      <Header data={data}/>
+      <Main data={data}/>
+      <Footer data={data}/>
 
+    </div>
+  )
+}
 const rootElement = document.getElementById('root')
 // we render the JSX element using the ReactDOM package
-ReactDOM.render(app, rootElement)
+ReactDOM.render(<App/>, rootElement)
