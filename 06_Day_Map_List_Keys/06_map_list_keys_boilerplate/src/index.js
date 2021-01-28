@@ -2,45 +2,56 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 
-// importing data
 
-import { countriesData } from './data/countries'
-import { tenMostHighestPopulations } from './data/ten_most_highest_populations'
+const numbersList = ()=>{
+  let numbers = []; 
+  for(let i =0; i < 32; i++){
+    numbers.push(i);
+  }
+  console.log(numbers)
+  return numbers; 
+}
 
-const countries = [
-  { name: 'Finland', city: 'Helsinki' },
-  { name: 'Sweden', city: 'Stockholm' },
-  { name: 'Denmark', city: 'Copenhagen' },
-  { name: 'Norway', city: 'Oslo' },
-  { name: 'Iceland', city: 'Reykjavík' },
-]
+const isPrime = (num)=>{
+  for(let i = 2; i < num; i++){
+    if(num%i === 0) return false; 
+  } 
+  return num > 1;
+}
 
-// Country component
-const Country = ({ country: { name, city } }) => {
-  return (
-    <div>
-      <h1>{name}</h1>
-      <small>{city}</small>
+const isEven = (num)=> num%2 === 0 ? true : false;   
+
+const Numbers = ({numbers})=>{
+  const list = numbers.map((num)=>{
+    if (isPrime(num)){
+      return <div className= 'num prime'key={num}>
+        <div className='insideText'> {num} </div>
+        
+        </div>
+    }else if(isEven(num)){
+      return <div className= 'num even'key={num}>
+                <div className='insideText'> {num} </div>
+              </div>
+    }
+    return(
+    <div className= 'num odd'key={num}>
+      <div className='insideText'> {num} 
+      </div>
     </div>
-  )
+    )
+  })
+  return list; 
 }
-
-// countries component
-const Countries = ({ countries }) => {
-  const countryList = countries.map((country) => (
-    <Country key={country.name} country={country} />
-  ))
-  return <div>{countryList}</div>
-}
-
 // The App, or the parent or the container component
 // Functional Component
 const App = () => {
   return (
     <div className='app'>
       <div>
-        <h1>Countries List</h1>
-        <Countries countries={countries} />
+        <h1>30 Days of React</h1>
+        <div className='all-numbers'>
+          <Numbers numbers={numbersList()}/>
+        </div>  
       </div>
     </div>
   )
